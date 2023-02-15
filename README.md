@@ -2,26 +2,27 @@
 
 ## users table
 
-| Column             | Type                | Options                   |
-|--------------------|---------------------|---------------------------|
-| nickname           | string              | null: false,              |
-| email              | string              | null: false, unique: true |
-| password           | string              | null: false               |
-
+| Column              | Type                | Options                   |
+|---------------------|---------------------|---------------------------|
+| nickname            | string              | null: false,              |
+| email               | string              | null: false, unique: true |
+| encrypted_password  | string              | null: false               |
+| name(kanji)         | text                | null: false               |
+| name(katakana)      | text                | null: false               |
+| birthday            | text                | null: false               |
 
 ### Association
 
 * has_many :items
 * has_many :comments
-* has_one :profile
+
 
 ## items table
 
 | Column                              | Type       | Options                        |
 |-------------------------------------|------------|--------------------------------|
 | title                               | string     | null: false                    |
-| image                               | text       | null: false                    |
-| price                               | text       | null: false                    |
+| price                               | integer    | null: false                    |
 | user                                | references | null: false, foreign_key: true |
 
 ### Association
@@ -44,16 +45,6 @@
 - belongs_to :user
 
 
-## profile table
-| name(kanji)           | text                | null: false               |
-| name(katakana)        | text                | null: false               |
-| birthday              | text                | null: false               |
-
-### Association
-
-- belongs_to :user
-
-
 ## detail table
 | categoly           | text                | null: false               |
 | status             | text                | null: false               |
@@ -64,23 +55,24 @@
 - belongs_to :item
 
 
-## purchase table
+## orders table
 | user_id             | text                | null: false               |
+| item_id             | text                | null: false               |
 
 
 ### Association
 
-- has_one :destination
+- has_one :addresses
 
-## destination table
-| postcode           | text                | null: false               |
-| prefectures        | text                | null: false               |
-| municipalities     | text                | null: false               |
-| address            | text                | null: false               |
-| buildingname       | text                |                           |
-| telephonenumber    | text                | null: false               |
+## addresses table
+| postcode           | string              | null: false               |
+| prefecture_id      | integer             | null: false               |
+| municipalities     | string              | null: false               |
+| address            | string              | null: false               |
+| buildingname       | string              |                           |
+| telephonenumber    | string              | null: false               |
 
 
 ### Association
 
-- belongs_to :purchase
+- belongs_to :orders
