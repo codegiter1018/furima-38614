@@ -4,7 +4,7 @@
 
 | Column              | Type                | Options                   |
 |---------------------|---------------------|---------------------------|
-| nickname            | string              | null: false,              |
+| nickname            | string              | null: false               |
 | email               | string              | null: false, unique: true |
 | encrypted_password  | string              | null: false               |
 | sei_kanji           | string              | null: false               |
@@ -25,8 +25,9 @@
 |-------------------------------------|------------|--------------------------------|
 | title                               | string     | null: false                    |
 | price                               | integer    | null: false                    |
+| description                         | text       | null: false                    |
 | user                                | references | null: false, foreign_key: true |
-| categoly_id                         | integer    | null: false                    |
+| category_id                         | integer    | null: false                    |
 | status_id                           | integer    | null: false                    |
 | delivery_id                         | integer    | null: false                    |
 | prefecture_id                       | integer    | null: false                    |    
@@ -36,36 +37,36 @@
 ### Association
 
 - belongs_to :user
-- belongs_to :orders dependent: :destroy
+- has_one :orders dependent: :destroy
 
 
 
 
 ## orders table
-| Column           | Type                      | Options                   |
-|------------------|---------------------------|---------------------------|
-| user             | references                | null: false               |
-| item             | references                | null: false               |
+| Column           | Type                      | Options                            |
+|------------------|---------------------------|------------------------------------|
+| user             | references                | null: false, foreign_key: true     |
+| item             | references                | null: false, foreign_key: true     |
 
 
 ### Association
 
-- has_one :addresse
+- has_one :address
 - belongs_to :user
 - belongs_to :item
 
 
 
 ## addresses table
-| Column             | Type                | Options                   |
-|--------------------|---------------------|---------------------------|
-| postcode           | string              | null: false               |
-| prefecture_id      | integer             | null: false               |
-| municipalities     | string              | null: false               |
-| address            | string              | null: false               |
-| buildingname       | string              |                           |
-| telephonenumber    | string              | null: false               |
-| order              | references          | null: false               |
+| Column             | Type                | Options                         |
+|--------------------|---------------------|---------------------------------|
+| postcode           | string              | null: false                     |
+| prefecture_id      | integer             | null: false                     |
+| municipalities     | string              | null: false                     |
+| address            | string              | null: false                     |
+| buildingname       | string              |                                 |
+| telephonenumber    | string              | null: false                     |
+| order              | references          | null: false, foreign_key: true  |
 
 ### Association
 
