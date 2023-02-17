@@ -37,7 +37,7 @@
 ### Association
 
 - belongs_to :user
-- has_one :orders dependent: :destroy
+- has_one :order dependent: :destroy
 
 
 
