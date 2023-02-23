@@ -23,16 +23,15 @@
 
 | Column                              | Type       | Options                        |
 |-------------------------------------|------------|--------------------------------|
-| title                               | string     | null: false                    |
-| price                               | integer    | null: false                    |
-| description                         | text       | null: false                    |
 | user                                | references | null: false, foreign_key: true |
+| title                               | string     | null: false                    |
+| description                         | text       | null: false                    |
 | category_id                         | integer    | null: false                    |
 | status_id                           | integer    | null: false                    |
 | delivery_id                         | integer    | null: false                    |
 | prefecture_id                       | integer    | null: false                    |    
 | criterion_id                        | integer    | null: false                    |
-
+| price                               | integer    | null: false                    |
 
 ### Association
 
