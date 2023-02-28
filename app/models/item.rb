@@ -12,7 +12,7 @@ class Item < ApplicationRecord
  belongs_to :criterion
 
 
- validate :user_id
+
  validates :image, presence: true
  validates :title, presence: true
  validates :description, presence: true
@@ -21,7 +21,7 @@ class Item < ApplicationRecord
  validates :delivery_id, presence: true,numericality: { other_than: 1 , message: "can't be blank"}
  validates :prefecture_id, presence: true,numericality: { other_than: 1 , message: "can't be blank"}
  validates :criterion_id, presence: true,numericality: { other_than: 1 , message: "can't be blank"}
- validates :price, format: { with: /\A[0-9]+\z/ }, numericality: { greater_than_or_equal_to: 300, less_than_or_equal_to: 9999999 }
+ validates :price, numericality: { only_integer: true , greater_than_or_equal_to: 300, less_than_or_equal_to: 9999999 }
 
 
 
