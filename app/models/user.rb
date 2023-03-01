@@ -13,4 +13,7 @@ class User < ApplicationRecord
   validates :sei_katakana, presence: true, format: { with: /\A[ァ-ヶー－]+\z/ }
   validates :mei_katakana, presence: true, format: { with: /\A[ァ-ヶー－]+\z/ }
   validates :birthday, presence: true
+
+
+  has_many :items
 end
