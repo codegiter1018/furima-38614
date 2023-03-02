@@ -29,8 +29,8 @@ class ItemsController < ApplicationController
   end
 
   def update
-    @item.update(item_params)
-    if @item.save
+    if @item.update(item_params)
+      @item.save
       redirect_to item_path(item_params)
     else
       render 'edit'
