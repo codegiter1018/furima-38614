@@ -4,7 +4,7 @@ class OrdersController < ApplicationController
   
   
   def index
-   if current_user.id == @item.user_id || @item.order.present?
+   if  current_user.id != @item.user_id && @item.order == nil
       @item_order = ItemOrder.new
     else
       redirect_to root_path
@@ -13,7 +13,9 @@ class OrdersController < ApplicationController
 
 
   def create
+   
     @item_order = ItemOrder.new(order_params)
+    
     if @item_order.valid?
       pay_item
       @item_order.save
@@ -25,7 +27,7 @@ class OrdersController < ApplicationController
 
   private
   def set_item
-    @item = Item.find(params[:id])
+    @item = Item.find(params[:item_id])
   end
   
   def order_params
