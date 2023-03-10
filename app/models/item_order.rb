@@ -10,9 +10,8 @@ class ItemOrder
     validates :prefecture_id, numericality: {other_than: 0, message: "can't be blank"}
     validates :municipalities
     validates :address
-  
     validates :telephonenumber, format: { with: /\A\d{11}\z/, message: 'is invalid' }
-
+    validates :token
   
   end
   
