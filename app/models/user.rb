@@ -14,7 +14,6 @@ class User < ApplicationRecord
   validates :mei_katakana, presence: true, format: { with: /\A[ァ-ヶー－]+\z/ }
   validates :birthday, presence: true
 
-
   has_many :items
   has_many :orders
 end

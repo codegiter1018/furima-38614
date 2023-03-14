@@ -22,7 +22,7 @@ class ItemsController < ApplicationController
   end
 
   def edit
-    return unless @item.user_id != current_user.id
+    return unless @item.user_id != current_user.id || !@item.order.nil?
 
     redirect_to root_path
   end
@@ -48,7 +48,8 @@ class ItemsController < ApplicationController
   private
 
   def item_params
-    params.require(:item).permit(:image, :title, :description, :category_id, :status_id, :delivery_id, :prefecture_id, :criterion_id, :price).merge(user_id: current_user.id)
+    params.require(:item).permit(:image, :title, :description, :category_id, :status_id, :delivery_id, :prefecture_id,
+                                 :criterion_id, :price).merge(user_id: current_user.id)
   end
 
   def set_item
